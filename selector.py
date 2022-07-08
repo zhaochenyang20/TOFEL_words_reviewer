@@ -27,13 +27,38 @@ def parser_data():
         dest="random",
         help="if you want to random select, then input --r, ohterwise do not",
     )
+    parser.add_argument(
+        '-s',
+        dest="start",
+        type=int,
+        default=0,
+        help='which index to start reading from',
+    )
+    parser.add_argument(
+        '-l',
+        dest="length",
+        type=int,
+        default=0,
+        help='how many words would you randomly choose from',
+    )
     args = parser.parse_args()
-    return args.random, args.num
+    return args.random, args.num, args.start, args.length
 
 
-def make_review(random, num, index):
+def make_review(random, num, start, length, index):
     with open("./collection.txt", "r") as f:
         words = np.asarray(list(filter(None, f.read().split("\n"))))
+
+    # cut the words and fix some boundary conditions
+
+    if length > 0 and length <= len(words):
+        if start + length > len(words):
+            words = words[start:]
+        else:
+            words = words[start:start + length]
+        if num > length:
+            num = length
+
     if random:
         print("random select")
         rng = np.random.default_rng()
