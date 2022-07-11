@@ -1,4 +1,25 @@
-This project is based on a google API, which requires loading the library locally.
+# Readme
+
+本项目用于根据用户提供的生词本 `./collection.txt` 文件来生成复习所用的单词本。
+
+具体使用参数约定如下：
+
+```python
+1. -n 表示用户希望从自己所选择范围内具体想要复习的单词数量
+2. --r 表示用户希望随机选择单词（不输入 --r 则表示不希望随机选择）
+3. -s 表示用户希望从第几个单词开始
+4. -l 表示用户希望复习的单词范围大小，也即从 start 开始，长度为 length
+```
+
+例如：`python3 selector.py -n 100 --r -s 20 -l 200` 表示希望从生词本的第 20 个单词开始到第 220 个单词结束的范围内随机抽取 100 个生词生成生词本。
+
+生词本存放于 `./data` 路径下，含有翻译完全和未翻译两种。旧的生词本不会被新生成的生词本覆盖。
+
+# 项目环境
+
+项目的基本环境在 `./requirements.yaml` 下，请运行如下指令 `conda env create -n <env_name> -f ./requirements.yaml` 添加新的 conda 环境。
+
+代码中利用的谷歌翻译库安装方法如下：
 
 1. Enter the file that contains the library:
 
@@ -16,27 +37,5 @@ Or use anthor universal command:
 
 ```shell
 pip install -e $(pwd)
-```
-
-3. Go back to the last file:
-
-```shell
-cd ..
-```
-
-4. Run `selector.py` : 
-
-```shell
->> python selector.py --help
-usage: TOELF words reviewer [-h] [-n NUM] [--r] [-s START] [-l LENGTH]
-
-choose random or sorted method.
-
-optional arguments:
-  -h, --help         show this help message and exit
-  -n NUM, --num NUM  how many words would you like to review
-  --r                if you want to random select, then input --r, ohterwise do not
-  -s START           which index to start reading from
-  -l LENGTH          how many words would you randomly choose from
 ```
 

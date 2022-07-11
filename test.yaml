@@ -1,0 +1,4 @@
+name: test
+channels:
+  - defaults
+prefix: /home/zhaocy/zhaocy/.conda/envs/test
