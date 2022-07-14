@@ -47,4 +47,4 @@ pip install pygtrans
 ```python
 from pygtrans import translate
 ```
-即可。（目前自动安装的版本是1.4.0）
+即可。（目前自动安装的版本是 1.4.0）
