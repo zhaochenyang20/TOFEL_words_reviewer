@@ -39,3 +39,12 @@ Or use anthor universal command:
 pip install -e $(pwd)
 ```
 
+注：如果该安装包安装失败的话，可尝试使用pygtrans库，安装方法如下：在conda的虚拟环境中输入
+```shell
+pip install pygtrans
+```
+即可完成安装，使用时只需
+```python
+from pygtrans import translate
+```
+即可。（目前自动安装的版本是 1.4.0）
